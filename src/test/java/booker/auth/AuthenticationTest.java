@@ -19,4 +19,10 @@ public class AuthenticationTest extends BaseBookerTest {
         authSteps.responseIsSuccessful();
         authSteps.authTokenIsGenerated();
     }
+
+    @Test
+    public void cannotGenerateAuthToken() {
+        authSteps.givenCredentials("wrong_pass", "wrong_login");
+        authSteps.responseIsUnauthorized();
+    }
 }
