@@ -15,10 +15,10 @@ public class BookingServiceTest extends BaseBookerTest {
     BookingSteps steps;
 
     @Test
-    public void canGetAllBookings() {
-        steps.whenRequestingListOfBookings();
-        steps.responseIsSuccessful();
-        steps.listOfBookingsIsReturned();
+    public void canCreateBooking() {
+        steps.givenCorrectBookingInput();
+        steps.responseIsCreated();
+        steps.createdBookingInfoIsReturned();
     }
 
     @Test
@@ -29,10 +29,10 @@ public class BookingServiceTest extends BaseBookerTest {
     }
 
     @Test
-    public void canCreateBooking() {
-        steps.givenCorrectBookingInput();
+    public void canGetAllBookings() {
+        steps.whenRequestingListOfBookings();
         steps.responseIsSuccessful();
-        steps.createdBookingInfoIsReturned();
+        steps.listOfBookingsIsReturned();
     }
 
     @Test
@@ -41,14 +41,16 @@ public class BookingServiceTest extends BaseBookerTest {
         steps.givenCorrectBookingIdIsProvided(bookingID);
         steps.updateIsApplied(bookingID);
         steps.responseIsSuccessful();
+        steps.bookingEntryIsUpdated();
     }
 
     @Test
     public void canPatchBooking() {
         Integer bookingID = BookingHelper.randomBookingID();
         steps.givenCorrectBookingIdIsProvided(bookingID);
-        steps.patchIsApplied(bookingID);
+        steps.patchWithToken(bookingID);
         steps.responseIsSuccessful();
+        steps.bookingEntryIsPatched();
     }
 
     @Test
