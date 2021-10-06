@@ -23,27 +23,18 @@ val hamcrestVersion = "1.3"
 val serenityVersion = "2.6.0"
 
 dependencies {
-    implementation("net.serenity-bdd:serenity-core:$serenityVersion")
-    implementation("net.serenity-bdd:serenity-rest-assured:$serenityVersion")
-    implementation("net.serenity-bdd:serenity-gradle-plugin:$serenityVersion")
-    implementation("io.rest-assured:rest-assured:$restAssuredVersion")
-    implementation("io.rest-assured:json-schema-validator:$restAssuredVersion")
-    implementation("org.hamcrest:hamcrest-all:$hamcrestVersion")
-    implementation("com.squareup.moshi:moshi:$moshiVersion")
-    implementation("com.squareup.moshi:moshi-adapters:$moshiVersion")
-    implementation("org.projectlombok:lombok:$lombokVersion")
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
-
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junitTestEngineVersion")
     testImplementation("junit:junit:$junitVersion")
     testImplementation("net.serenity-bdd:serenity-core:$serenityVersion")
     testImplementation("net.serenity-bdd:serenity-junit:$serenityVersion")
-    testImplementation("org.apache.commons:commons-lang3:$commonsLang3Version")
-    testImplementation("org.projectlombok:lombok:$lombokVersion")
+    testImplementation("net.serenity-bdd:serenity-rest-assured:$serenityVersion")
+    testImplementation("net.serenity-bdd:serenity-gradle-plugin:$serenityVersion")
     testImplementation("com.squareup.moshi:moshi:$moshiVersion")
     testImplementation("com.squareup.moshi:moshi-adapters:$moshiVersion")
     testImplementation("io.rest-assured:rest-assured:$restAssuredVersion")
+    testImplementation("io.rest-assured:json-schema-validator:$restAssuredVersion")
+    testImplementation("org.projectlombok:lombok:$lombokVersion")
     testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junitTestEngineVersion")
 }
 
 tasks.test {
